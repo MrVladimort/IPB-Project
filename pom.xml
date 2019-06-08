@@ -10,9 +10,9 @@
     </parent>
 
     <groupId>pl.pjatk.ipb</groupId>
-    <artifactId>project</artifactId>
+    <artifactId>ipb-project-app</artifactId>
     <version>1.0.0</version>
-    <name>project</name>
+    <name>ipb-project-app</name>
     <description>Project for IPB</description>
 
     <properties>
