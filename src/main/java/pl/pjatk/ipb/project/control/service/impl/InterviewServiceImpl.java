@@ -22,7 +22,7 @@ import pl.pjatk.ipb.project.control.entity.InterviewEntity.InterviewStatus;
 import pl.pjatk.ipb.project.control.entity.RecruitmentEntity;
 import pl.pjatk.ipb.project.control.entity.RecruitmentEntity.RecruitmentStatus;
 import pl.pjatk.ipb.project.control.entity.TeamLeadEntity;
-import pl.pjatk.ipb.project.control.exceptions.EntityNotFoundException;
+import pl.pjatk.ipb.project.controller.exceptions.EntityNotFoundException;
 import pl.pjatk.ipb.project.control.mapper.ProjectMapper;
 import pl.pjatk.ipb.project.control.service.InterviewService;
 

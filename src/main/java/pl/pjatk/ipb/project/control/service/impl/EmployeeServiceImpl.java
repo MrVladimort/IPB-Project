@@ -20,7 +20,7 @@ import pl.pjatk.ipb.project.control.entity.EmployeeEntity;
 import pl.pjatk.ipb.project.control.entity.EmployeeEntity.EmployeeStatus;
 import pl.pjatk.ipb.project.control.entity.HrEntity;
 import pl.pjatk.ipb.project.control.entity.TeamLeadEntity;
-import pl.pjatk.ipb.project.control.exceptions.EntityNotFoundException;
+import pl.pjatk.ipb.project.controller.exceptions.EntityNotFoundException;
 import pl.pjatk.ipb.project.control.mapper.ProjectMapper;
 import pl.pjatk.ipb.project.control.security.JwtTokenProvider;
 import pl.pjatk.ipb.project.control.service.EmployeeService;

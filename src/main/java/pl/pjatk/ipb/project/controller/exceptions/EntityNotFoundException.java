@@ -1,4 +1,4 @@
-package pl.pjatk.ipb.project.control.exceptions;
+package pl.pjatk.ipb.project.controller.exceptions;
 
 public class EntityNotFoundException extends RuntimeException {
     public EntityNotFoundException() {

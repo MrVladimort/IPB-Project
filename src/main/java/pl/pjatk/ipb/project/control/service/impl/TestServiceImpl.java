@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service;
 import pl.pjatk.ipb.project.boundary.dto.TestDTO;
 import pl.pjatk.ipb.project.control.dao.TestDAO;
 import pl.pjatk.ipb.project.control.entity.TestEntity;
-import pl.pjatk.ipb.project.control.exceptions.EntityNotFoundException;
-import pl.pjatk.ipb.project.control.exceptions.TestsFailedException;
+import pl.pjatk.ipb.project.controller.exceptions.EntityNotFoundException;
+import pl.pjatk.ipb.project.controller.exceptions.TestsFailedException;
 import pl.pjatk.ipb.project.control.mapper.ProjectMapper;
 import pl.pjatk.ipb.project.control.service.TestService;
 

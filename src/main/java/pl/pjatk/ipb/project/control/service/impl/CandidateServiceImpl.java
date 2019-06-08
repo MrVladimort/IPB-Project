@@ -13,7 +13,7 @@ import pl.pjatk.ipb.project.control.entity.UserEntity;
 import pl.pjatk.ipb.project.control.mapper.ProjectMapper;
 import pl.pjatk.ipb.project.control.security.JwtTokenProvider;
 import pl.pjatk.ipb.project.control.service.CandidateService;
-import pl.pjatk.ipb.project.control.exceptions.EntityNotFoundException;
+import pl.pjatk.ipb.project.controller.exceptions.EntityNotFoundException;
 
 import java.util.List;
 import java.util.stream.Collectors;

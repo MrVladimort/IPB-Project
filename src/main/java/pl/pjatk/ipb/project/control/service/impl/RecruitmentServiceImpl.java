@@ -22,7 +22,7 @@ import pl.pjatk.ipb.project.control.dao.RecruitmentDAO;
 import pl.pjatk.ipb.project.control.entity.*;
 import pl.pjatk.ipb.project.control.entity.EmployeeEntity.EmployeeStatus;
 import pl.pjatk.ipb.project.control.entity.RecruitmentEntity.RecruitmentStatus;
-import pl.pjatk.ipb.project.control.exceptions.EntityNotFoundException;
+import pl.pjatk.ipb.project.controller.exceptions.EntityNotFoundException;
 import pl.pjatk.ipb.project.control.mapper.ProjectMapper;
 import pl.pjatk.ipb.project.control.service.RecruitmentService;
 
