@@ -20,7 +20,6 @@ public class JobOfferDTO {
   private String description;
   private Integer salary;
 
-
   @Builder
   public JobOfferDTO(Long id, String name, String position, String description,
       Integer salary) {

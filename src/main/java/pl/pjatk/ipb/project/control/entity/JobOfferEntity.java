@@ -49,6 +49,7 @@ public class JobOfferEntity {
       mappedBy = "jobOffer",
       cascade = CascadeType.ALL,
       fetch = FetchType.LAZY)
+  @ToString.Exclude
   @EqualsAndHashCode.Exclude
   private Set<RecruitmentEntity> recruitments = new HashSet<>();
 

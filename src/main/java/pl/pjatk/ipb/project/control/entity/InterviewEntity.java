@@ -1,17 +1,8 @@
 package pl.pjatk.ipb.project.control.entity;
 
 import java.time.LocalDate;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
+
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -32,8 +23,7 @@ public class InterviewEntity {
   @SequenceGenerator(name = "I_SQ", sequenceName = "INTERVIEWS_SEQ", allocationSize = 1)
   private Long id;
 
-  @ManyToOne(targetEntity = RecruitmentEntity.class)
-  @JoinColumn(name = "RECRUITMENT_ID", referencedColumnName = "RECRUITMENT_ID")
+  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
   private RecruitmentEntity recruitment;

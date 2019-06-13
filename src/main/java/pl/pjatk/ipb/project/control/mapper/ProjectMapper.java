@@ -2,6 +2,7 @@ package pl.pjatk.ipb.project.control.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
 import org.mapstruct.ReportingPolicy;
 import pl.pjatk.ipb.project.boundary.dto.CandidateDTO;
 import pl.pjatk.ipb.project.boundary.dto.EmployeeDTO;
@@ -29,41 +30,44 @@ import pl.pjatk.ipb.project.control.security.UserPrincipal;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.WARN)
 public abstract class ProjectMapper {
 
-  public abstract CandidateEntity candidateEntityFromDto(RegisterCandidateDTO dto);
+    public abstract CandidateEntity candidateEntityFromDto(RegisterCandidateDTO dto);
 
-  public abstract CandidateDTO candidateDtoFromEntity(CandidateEntity entity);
+    public abstract CandidateDTO candidateDtoFromEntity(CandidateEntity entity);
 
-  public abstract UserDTO userDtoFromPrincipal(UserPrincipal entity);
+    public abstract UserDTO userDtoFromPrincipal(UserPrincipal entity);
 
-  public abstract UserPrincipal principalFromEntity(UserEntity entity);
+    public abstract UserPrincipal principalFromEntity(UserEntity entity);
 
-  public abstract UserDTO userDtoFromEntity(UserEntity entity);
+    public abstract UserDTO userDtoFromEntity(UserEntity entity);
 
-  public abstract TestDTO testDtoFromEntity(TestEntity entity);
+    public abstract TestDTO testDtoFromEntity(TestEntity entity);
 
-  public abstract TestEntity testEntityFromDto(TestDTO entity);
+    public abstract TestEntity testEntityFromDto(TestDTO entity);
 
-  public abstract JobOfferDTO jobOfferEntityFromDto(JobOfferEntity entity);
+    public abstract JobOfferDTO jobOfferEntityFromDto(JobOfferEntity entity);
 
-  @Mapping(target = "candidate", source = "recruitment.candidate")
-  public abstract InterviewDTO interviewEntityToDto(InterviewEntity entity);
+    @Mappings({
+            @Mapping(target = "candidate", source = "recruitment.candidate"),
+            @Mapping(target = "jobOffer", source = "recruitment.jobOffer"),
+    })
+    public abstract InterviewDTO interviewEntityToDto(InterviewEntity entity);
 
-  public abstract RecruitmentDTO recruitmentDtoFromEntity(RecruitmentEntity entity);
+    public abstract RecruitmentDTO recruitmentDtoFromEntity(RecruitmentEntity entity);
 
-  public abstract EmployeeDTO employeeDtoFromEntity(EmployeeEntity entity);
+    public abstract EmployeeDTO employeeDtoFromEntity(EmployeeEntity entity);
 
-  public abstract EmployeeEntity employeeEntityFromCandidate(CandidateEntity entity);
+    public abstract EmployeeEntity employeeEntityFromCandidate(CandidateEntity entity);
 
-  public abstract HrDTO hrDtoFromEntity(HrEntity entity);
+    public abstract HrDTO hrDtoFromEntity(HrEntity entity);
 
-  public abstract HrEntity hrEntityFromDto(HrDTO hrDTO);
+    public abstract HrEntity hrEntityFromDto(HrDTO hrDTO);
 
-  public abstract HrEntity hrEntityFromDto(RegisterHrDTO hrDTO);
+    public abstract HrEntity hrEntityFromDto(RegisterHrDTO hrDTO);
 
-  public abstract TeamLeadDTO teamLeadDtoFromEntity(TeamLeadEntity entity);
+    public abstract TeamLeadDTO teamLeadDtoFromEntity(TeamLeadEntity entity);
 
-  public abstract TeamLeadEntity teamLeadEntityFromDto(TeamLeadDTO dto);
+    public abstract TeamLeadEntity teamLeadEntityFromDto(TeamLeadDTO dto);
 
-  public abstract TeamLeadEntity teamLeadEntityFromDto(RegisterTeamLeadDTO dto);
+    public abstract TeamLeadEntity teamLeadEntityFromDto(RegisterTeamLeadDTO dto);
 
 }

@@ -1,6 +1,7 @@
 package pl.pjatk.ipb.project.control.service.impl;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -50,6 +51,7 @@ public class InterviewServiceImpl implements InterviewService {
         log.info("Interviews: {}", interviewEntities);
 
         return interviewEntities.stream()
+                .sorted(Comparator.comparing(InterviewEntity::getId).reversed())
                 .map(mapper::interviewEntityToDto)
                 .collect(Collectors.toList());
     }
@@ -60,6 +62,7 @@ public class InterviewServiceImpl implements InterviewService {
         log.info("Interviews: {}", interviewEntities);
 
         return interviewEntities.stream()
+                .sorted(Comparator.comparing(InterviewEntity::getId).reversed())
                 .map(mapper::interviewEntityToDto)
                 .collect(Collectors.toList());
     }
@@ -70,6 +73,7 @@ public class InterviewServiceImpl implements InterviewService {
         log.info("Interviews: {}", interviewEntities);
 
         return interviewEntities.stream()
+                .sorted(Comparator.comparing(InterviewEntity::getId).reversed())
                 .map(mapper::interviewEntityToDto)
                 .collect(Collectors.toList());
     }
@@ -80,6 +84,7 @@ public class InterviewServiceImpl implements InterviewService {
         log.info("Interviews: {}", interviewEntities);
 
         return interviewEntities.stream()
+                .sorted(Comparator.comparing(InterviewEntity::getId).reversed())
                 .map(mapper::interviewEntityToDto)
                 .collect(Collectors.toList());
     }
@@ -89,20 +94,23 @@ public class InterviewServiceImpl implements InterviewService {
             Long candidateId, Long recruitmentId, InterviewDTO dateAndTime) {
         log.info("Create interview with params candidateId: {}, recruitmentId: {}, dateAndTime: {}", candidateId, recruitmentId, dateAndTime);
 
+        InterviewEntity interview =
+                InterviewEntity.builder()
+                        .date(dateAndTime.getDate())
+                        .time(dateAndTime.getTime())
+                        .status(InterviewStatus.PENDING)
+                        .build();
+
         RecruitmentEntity recruitmentEntity =
                 recruitmentDao
                         .findByIdAndStatus(recruitmentId, RecruitmentStatus.ACCEPTED)
                         .orElseThrow(EntityNotFoundException::new);
 
+        recruitmentEntity.addInterview(interview);
+
         log.info("Recruitment: {}", recruitmentEntity);
 
-        InterviewEntity interview = interviewDao.save(
-                InterviewEntity.builder()
-                        .date(dateAndTime.getDate())
-                        .time(dateAndTime.getTime())
-                        .status(InterviewStatus.PENDING)
-                        .recruitment(recruitmentEntity)
-                        .build());
+        interview = interviewDao.save(interview);
 
         log.info("Interview: {}", interview);
 

@@ -55,7 +55,7 @@ public class RecruitmentServiceImpl implements RecruitmentService {
                         RecruitmentEntity.builder()
                                 .candidate(candidateEntity)
                                 .jobOffer(jobOfferEntity)
-                                .status(RecruitmentStatus.PENDING)
+                                .status(testsResult > 60. ? RecruitmentStatus.PENDING : RecruitmentStatus.REFUSED)
                                 .testResultPercent(testsResult)
                                 .build()));
     }
@@ -122,14 +122,18 @@ public class RecruitmentServiceImpl implements RecruitmentService {
 
     @Override
     public List<RecruitmentDTO> getAllRecruitments() {
-        return StreamSupport.stream(recruitmentDao.findAll().spliterator(), false)
+        List<RecruitmentEntity> recruitmentEntities = StreamSupport.stream(recruitmentDao.findAll().spliterator(), false).collect(Collectors.toList());
+        log.info("Recruitments: {}", recruitmentEntities);
+        return recruitmentEntities.stream()
                 .map(mapper::recruitmentDtoFromEntity)
                 .collect(Collectors.toList());
     }
 
     @Override
     public List<RecruitmentDTO> getAllRecruitmentsForCandidate(Long id) {
-        return recruitmentDao.findAllByCandidate_Id(id).stream()
+        List<RecruitmentEntity> recruitmentEntities = recruitmentDao.findAllByCandidate_Id(id);
+        log.info("Recruitments: {}", recruitmentEntities);
+        return recruitmentEntities.stream()
                 .map(mapper::recruitmentDtoFromEntity)
                 .collect(Collectors.toList());
     }

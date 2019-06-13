@@ -50,8 +50,6 @@ public class TestServiceImpl implements TestService {
                   : 0.0);
         });
 
-    if (testsResult.get() < 60.) throw new TestsFailedException();
-
     return testsResult.get();
   }
 
